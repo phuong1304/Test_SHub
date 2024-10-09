@@ -10,16 +10,7 @@ import {
   TableCell,
   TableFooter,
 } from "@/components/ui/table"; // Đảm bảo đường dẫn đúng
-
-interface Transaction {
-  date: string;
-  time: string;
-  amount: number;
-}
-
-interface TransactionTableProps {
-  transactions: Transaction[];
-}
+import { TransactionTableProps } from "./types/tableTypes";
 
 const TransactionTable: FC<TransactionTableProps> = ({ transactions }) => {
   if (transactions.length === 0) {

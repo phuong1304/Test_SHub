@@ -24,12 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { IFormInputs } from "./types/formTypes";
-
-interface FormTransactionProps {
-  uniqueDates: string[];
-  onFormSubmit: (values: IFormInputs, selectedDate: string) => void;
-}
+import { FormTransactionProps, IFormInputs } from "./types/formTypes";
 
 const schema = yup.object().shape({
   startTime: yup.string().required("Bắt buộc chọn giờ bắt đầu"),

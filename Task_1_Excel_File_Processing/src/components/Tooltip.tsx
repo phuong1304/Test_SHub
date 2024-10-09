@@ -1,11 +1,7 @@
 "use client";
 
 import * as Tooltip from "@radix-ui/react-tooltip";
-
-interface CustomTooltipProps {
-  content: string;
-  children: React.ReactNode;
-}
+import { CustomTooltipProps } from "./types/tooltipTypes";
 
 const CustomTooltip: React.FC<CustomTooltipProps> = ({ content, children }) => {
   return (
