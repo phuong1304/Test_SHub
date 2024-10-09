@@ -11,17 +11,7 @@ import UploadFile from "@/components/UploadFile";
 import TransactionTable from "@/components/TransactionTable";
 import CustomTooltip from "@/components/Tooltip";
 import FormTransaction from "@/components/TransactionForm";
-
-interface IFormInputs {
-  startTime: string;
-  endTime: string;
-}
-
-interface Transaction {
-  date: string;
-  time: string;
-  amount: number;
-}
+import { IFormInputs, Transaction } from "@/components/types/formTypes";
 
 const schema = yup.object().shape({
   startTime: yup.string().required("Bắt buộc chọn giờ bắt đầu"),
@@ -42,7 +32,7 @@ export default function Home() {
   const [uniqueDates, setUniqueDates] = useState<string[]>([]);
   const [filteredTransactions, setFilteredTransactions] = useState<
     Transaction[]
-  >([]); // State mới
+  >([]);
 
   const handleDataExtracted = (
     extractedData: (string | number | undefined)[][]
@@ -65,8 +55,8 @@ export default function Home() {
     const headers = extractedData[startRowIndex] as string[];
     const timeIndex = headers.indexOf("Giờ");
     const amountIndex = headers.indexOf("Thành tiền (VNĐ)");
-
     const dateIndex = headers.indexOf("Ngày");
+
     // Lấy ngày đầu tiên từ cột "Ngày" sau hàng tiêu đề
     const transactions = extractedData
       .slice(startRowIndex + 1)
@@ -184,7 +174,9 @@ export default function Home() {
           </button>
         </CustomTooltip>
       </div>
+
       <UploadFile onDataExtracted={handleDataExtracted} />
+
       <div className="flex flex-wrap justify-between">
         <div className="w-[500px]">
           {uniqueDates.length > 0 && (
@@ -202,6 +194,7 @@ export default function Home() {
             </div>
           )}
         </div>
+
         <div className="w-[500px] ">
           {/* Hiển thị bảng giao dịch đã lọc */}
           {filteredTransactions.length > 0 && (

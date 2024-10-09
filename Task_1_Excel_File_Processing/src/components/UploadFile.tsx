@@ -2,10 +2,7 @@ import React, { FC, useState } from "react";
 import * as XLSX from "xlsx";
 // import { Button } from "./ui/button";
 import Image from "next/image";
-
-interface UploadFileProps {
-  onDataExtracted: (data: (string | number)[][]) => void;
-}
+import { UploadFileProps } from "./types/uploadType";
 
 const UploadFile: FC<UploadFileProps> = ({ onDataExtracted }) => {
   const [selectedFile, setSelectedFile] = useState<string | null>(null);

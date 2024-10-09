@@ -8,3 +8,8 @@ export interface Transaction {
   time: string;
   amount: number;
 }
+
+export interface FormTransactionProps {
+  uniqueDates: string[];
+  onFormSubmit: (values: IFormInputs, selectedDate: string) => void;
+}
